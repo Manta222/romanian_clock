@@ -3,39 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Romanian Real Time</title>
+    <meta name="theme-color" content="#000000">
+    <meta name="description" content="Romanian real-time clock">
+    <title>Romanian Time</title>
+    <link rel="manifest" href="/manifest.json">
     <style>
         body {
+            margin: 0;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
-            margin: 0;
-            background-color: black;
-            color: white;
             font-family: Arial, sans-serif;
-            font-size: 10vw; /* Responsive font size */
-            text-align: center;
+            background: #f0f0f0;
+        }
+        #clock {
+            font-size: 2em;
+            font-weight: bold;
+            color: #333;
         }
     </style>
 </head>
 <body>
-    <div id="time"></div>
-
+    <div id="clock"></div>
     <script>
-        function updateTime() {
+        function updateClock() {
             const now = new Date();
-            const options = {
-                timeZone: "Europe/Bucharest",
-                hour: '2-digit',
-                minute: '2-digit',
-                second: '2-digit'
-            };
-            const timeString = now.toLocaleTimeString('en-RO', options);
-            document.getElementById('time').innerText = timeString;
+            const options = { timeZone: 'Europe/Bucharest', hour: '2-digit', minute: '2-digit', second: '2-digit' };
+            document.getElementById('clock').textContent = now.toLocaleTimeString('en-US', options);
         }
-        setInterval(updateTime, 1000);
-        updateTime();
+        setInterval(updateClock, 1000);
+        updateClock();
     </script>
 </body>
 </html>
